@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widgets/dashboard_bar.dart';
+
+import './text_styles.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -9,29 +10,18 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State {
-  var menuIsOpen = false;
-  var dashboardRoute = 'chats';
-
-  handleDashboardRoute(String str) {
-    setState(() {
-      dashboardRoute = str;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Welcome'),
-        toolbarHeight: 60,
-        bottom: PreferredSize(
-          child: DashboardBar(dashboardRoute, handleDashboardRoute),
-          preferredSize: const Size.fromHeight(40),
-        ),
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 16,
+        bottom: 16,
+        left: 32,
+        right: 32,
       ),
-      endDrawer: Text('data'),
-      body: Column(
-        children: [],
+      child: Text(
+        'Whats going on?',
+        style: largeBlackText,
       ),
     );
   }

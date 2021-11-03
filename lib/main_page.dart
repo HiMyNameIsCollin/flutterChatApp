@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_chat/chat_room.dart';
 import './dashboard.dart';
+import 'widgets/page_header.dart';
+import 'widgets/page_switch.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -10,20 +11,43 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State {
-  var route = 'dashboard';
+  var _mainPageRoute = 'dashboard';
 
-  void changeRoute(String str) {
+  _handleMainPageRoute(String str) {
+    print(str);
     setState(() {
-      route = str;
+      _mainPageRoute = str;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (route == 'chatRoom') {
-      return ChatRoom();
-    } else {
-      return Dashboard();
-    }
+    return Scaffold(
+      body: Container(
+        child: Column(
+          children: [
+            PageHeader(),
+            PageSwitch(
+              _mainPageRoute,
+              _handleMainPageRoute,
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(50),
+                  ),
+                ),
+                child: Dashboard(),
+                width: double.infinity,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

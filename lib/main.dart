@@ -10,18 +10,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.green[900],
-        colorScheme: const ColorScheme.light().copyWith(
-          primary: Colors.green[900],
-          onPrimary: Colors.white,
-          secondary: Colors.grey[500],
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
         ),
-        scaffoldBackgroundColor: Colors.grey[400],
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            primary: Colors.white,
-          ),
-        ),
+        scaffoldBackgroundColor: Colors.deepPurpleAccent,
+        primarySwatch: Colors.purple,
       ),
       home: loggedIn ? MainPage() : null,
     );
